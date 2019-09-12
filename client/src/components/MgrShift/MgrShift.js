@@ -15,13 +15,16 @@ class MgrShift extends Component {
     // Add call to update shift
   };
 
-  render() {
+  manageShift = () =>{
     const teamId = "5d7a696573326e9c75438f01";
     console.log("Render function on ManagerShift.js");
 
     API.getManager(teamId)
-      .then(res => console.log(res))
+      .then(res => console.log("this is calling all the employee",teamId,res.data))
       .catch(err => console.log(err));
+
+  }
+  render() {
 
     return (
       <div>
@@ -38,7 +41,7 @@ class MgrShift extends Component {
               updateShift={this.updateShift}
             />
           ))}
-
+          {this.manageShift()}
           {/* <ShiftCard/> */}
         </div>
       </div>
