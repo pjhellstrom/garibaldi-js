@@ -1,10 +1,19 @@
 import React, { Component } from "react";
 import MgrNav from "./MgrNav";
 import ShiftCard from "./ShiftCard";
-import shifts from "../../fakedata/shift.json";
+// import shifts from "../../fakedata/shift.json";
 import API from "../../utils/api";
 
 class MgrShift extends Component {
+  state = {
+    teamId: "5d7a696573326e9c75438f01",
+    shifts: []
+  };
+
+  componentDidMount() {
+    this.fetchShifts();
+  }
+
   deleShift = id => {
     console.log(id);
     // Add call to remove shift
@@ -15,14 +24,13 @@ class MgrShift extends Component {
     // Add call to update shift
   };
 
-  render() {
-    const teamId = "5d7a696573326e9c75438f01";
-    console.log("Render function on ManagerShift.js");
-
-    API.getManager(teamId)
-      .then(res => console.log(res))
+  fetchShifts = () => {
+    API.getManager(this.state.teamId)
+      .then(res => this.setState({ shifts: res.data }))
       .catch(err => console.log(err));
+  };
 
+  render() {
     return (
       <div>
         <MgrNav />
@@ -30,7 +38,7 @@ class MgrShift extends Component {
           <h1>Manager Page</h1>
 
           {/* mapping through dummy data change to real data in production */}
-          {shifts.map((shifts, i) => (
+          {this.state.shifts.map((shifts, i) => (
             <ShiftCard
               {...shifts} // Breaks out shift data for rendering each card
               key={i} // Gives each card a react key i
