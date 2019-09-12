@@ -16,7 +16,10 @@ class MgrShift extends Component {
   };
 
   render() {
-    API.getManager()
+    const teamId = "5d7a696573326e9c75438f01";
+    console.log("Render function on ManagerShift.js");
+
+    API.getManager(teamId)
       .then(res => console.log(res))
       .catch(err => console.log(err));
 
