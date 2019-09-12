@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-  getManager: function() {
-    return axios.get("/api/shifts/manager");
+  getManager: function(teamId) {
+    return axios.get("/api/shifts/manager/" + teamId);
   }
 };

@@ -5,51 +5,45 @@ import shifts from "../../fakedata/shift.json";
 import API from "../../utils/api";
 
 class MgrShift extends Component {
+  deleShift = id => {
+    console.log(id);
+    // Add call to remove shift
+  };
 
-	deleShift = (id) =>{
-		console.log(id)
-		// Add call to remove shift
-	}
+  updateShift = id => {
+    console.log(id);
+    // Add call to update shift
+  };
 
-	updateShift = (id) =>{
-		console.log(id)
-		// Add call to update shift
-	}
+  render() {
+    API.getManager()
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
 
+    return (
+      <div>
+        <MgrNav />
+        <div>
+          <h1>Manager Page</h1>
 
-	render() {
-		API.getManager()
-		.then(res => console.log(res))
-		.catch(err => console.log(err));
+          {/* mapping through dummy data change to real data in production */}
+          {shifts.map((shifts, i) => (
+            <ShiftCard
+              {...shifts} // Breaks out shift data for rendering each card
+              key={i} // Gives each card a react key i
+              deleShift={this.deleShift}
+              updateShift={this.updateShift}
+            />
+          ))}
 
-		return (
-			<div>
-				<MgrNav/>
-				<div>
-					<h1>Manager Page</h1>
-
-					{/* mapping through dummy data change to real data in production */}
-					{shifts.map(
-						(shifts, i) => (
-						<ShiftCard
-							{...shifts} // Breaks out shift data for rendering each card
-							key={i} // Gives each card a react key i
-							deleShift={this.deleShift}
-							updateShift={this.updateShift}
-						/>
-						)
-					)}
-
-					{/* <ShiftCard/> */}
-
-				</div>
-			</div>
-		);
-	}
+          {/* <ShiftCard/> */}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default MgrShift;
-
 
 // {cards.map(
 // 	(cards, i) => (<MemCard
