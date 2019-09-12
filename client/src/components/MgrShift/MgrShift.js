@@ -46,7 +46,7 @@ class MgrShift extends Component {
               updateShift={this.updateShift}
             />
           ))}
-
+          {this.manageShift()}
           {/* <ShiftCard/> */}
         </div>
       </div>
