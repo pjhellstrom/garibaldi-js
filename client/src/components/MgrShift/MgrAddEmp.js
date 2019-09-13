@@ -21,12 +21,7 @@ class MgrAddEmp extends Component {
     const value = event.target.value;
     const name = event.target.name;
     this.setState({
-      [name]: value,
-      [password]: password,
-      [firstName]: value,
-      [lastName]: value,
-      [phoneNumber]: value,
-      [location]: value
+      [name]: value
     });
   };
 
