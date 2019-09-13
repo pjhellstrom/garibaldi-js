@@ -32,18 +32,16 @@ class MgrAddEmp extends Component {
   };
 
   saveEmployee = () => {
-    API.addEmployees(
-      {
-        username: this.state.username,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        phoneNumber: this.state.phoneNumber,
-        location: this.state.location,
-        isManager: this.state.isManager,
-        teamId: this.state.teamId
-      },
-      this.state.password
-    )
+    API.addEmployees({
+      username: this.state.username,
+      password: this.state.password,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      phoneNumber: this.state.phoneNumber,
+      location: this.state.location,
+      isManager: this.state.isManager,
+      teamId: this.state.teamId
+    })
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
