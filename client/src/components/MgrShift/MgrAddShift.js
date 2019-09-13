@@ -13,6 +13,7 @@ class MgrAddShift extends Component {
   state = {
     name: "",
     description: "",
+    claimed: 0,
     capacity: "",
     location: "",
     date: "",
@@ -38,7 +39,17 @@ class MgrAddShift extends Component {
   };
 
   saveShift = () => {
-    API.addShifts(this.state)
+    API.addShifts({
+      name: this.state.name,
+      description: this.state.description,
+      claimed: this.state.claimed,
+      capacity: this.state.capacity,
+      location: this.state.location,
+      date: this.state.date,
+      start: this.state.start,
+      end: this.state.end,
+      teamId: this.state.teamId
+    })
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
