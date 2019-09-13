@@ -14,14 +14,16 @@ class MgrShift extends Component {
     this.fetchShifts();
   }
 
-  deleShift = id => {
-    console.log(id);
-    // Add call to remove shift
+  deleShift = shiftId => {
+    API.removeShifts(shiftId)
+      .then(this.fetchShifts)
+      .catch(err => console.log(err));
   };
 
-  updateShift = id => {
-    console.log(id);
-    // Add call to update shift
+  updateShift = shiftId => {
+    API.updateShifts(shiftId)
+      .then(this.fetchShifts)
+      .catch(err => console.log(err));
   };
 
   fetchShifts = () => {
