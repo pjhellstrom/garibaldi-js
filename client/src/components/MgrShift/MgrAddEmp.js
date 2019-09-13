@@ -12,7 +12,7 @@ class MgrAddEmp extends Component {
     phoneNumber: "",
     location: "",
     isManager: false,
-    team_id: "5d7a696573326e9c75438f01"
+    teamId: "5d7a696573326e9c75438f01"
   };
 
   // **** NOTE: Should take team_id from user inputing data (manager team_id) ****
@@ -32,7 +32,18 @@ class MgrAddEmp extends Component {
   };
 
   saveEmployee = () => {
-    API.addEmployees(this.state)
+    API.addEmployees(
+      {
+        username: this.state.username,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        phoneNumber: this.state.phoneNumber,
+        location: this.state.location,
+        isManager: this.state.isManager,
+        teamId: this.state.teamId
+      },
+      this.state.password
+    )
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
@@ -73,16 +84,16 @@ class MgrAddEmp extends Component {
           First Name
           <input
             value={this.state.firstName}
-            name="firstname"
+            name="firstName"
             onChange={this.handleInputChange}
-            type="time"
+            type="text"
             placeholder="First Name"
           />
           <br />
           Last Name
           <input
             value={this.state.lastName}
-            name="lastname"
+            name="lastName"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Last Name"
@@ -91,7 +102,7 @@ class MgrAddEmp extends Component {
           Phone Number
           <input
             value={this.state.phoneNumber}
-            name="phonenumber"
+            name="phoneNumber"
             onChange={this.handleInputChange}
             type="tel"
             placeholder="Employee Phone Number"
@@ -104,7 +115,6 @@ class MgrAddEmp extends Component {
             onChange={this.handleInputChange}
             type="text"
             placeholder="Location"
-            min="1"
           />
           <br />
           <button onClick={this.handleFormSubmit}>Submit</button>
