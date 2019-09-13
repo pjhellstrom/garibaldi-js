@@ -13,8 +13,10 @@ const ShiftCard = (props) => {
 					<Card.Text>
 						<b>Date:</b> {props.date}<br/>
 						<b>Time:</b> {props.start} to {props.end}<br/>
-						<b>Location:</b> {props.location}
+						<b>Location:</b> {props.location}<br/>
+						<b>Description:</b> {props.description}
 					</Card.Text>
+					<button className="btn btn-success" onClick={props.addShift} >Accept</button>
 				</Card.Body>
 			</Card>
 
