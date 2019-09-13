@@ -1,49 +1,52 @@
 import React, { Component } from "react";
 import MgrNav from "./MgrNav";
 import MgrEmpCard from "./MgrEmpCard";
-import users from "../../fakedata/users.json";
-
+import API from "../../utils/api";
 
 class MgrTeam extends Component {
+  state = {
+    teamId: "5d7a696573326e9c75438f01",
+    employees: []
+  };
 
-	deleEmp = (id) =>{
-		console.log(id)
+  componentDidMount() {
+    this.fetchEmployees();
+  }
 
-		// have pseudo id of emp, make call to remove 
-	}
+  deleEmp = userId => {
+    API.removeEmployees(userId)
+      .then(this.fetchEmployees)
+      .catch(err => console.log(err));
+  };
 
-	render() {
-		return (
-			<div>
-				<MgrNav/>
-				<div>
-					<h1>Manage Team</h1>
+  fetchEmployees = () => {
+    API.getEmployees(this.state.teamId)
+      .then(res => this.setState({ employees: res.data }))
+      .catch(err => console.log(err));
+  };
 
-					{/* mapping through dummy data change to real data in production */}
-					{users.map(
-						(users, i) => (
-						
-							<MgrEmpCard
-								{...users} // Breaks out shifts data for rendering each card
-								key={i} // Gives each card a react key i
-								deleEmp={this.deleEmp}
-							/>
-							
-						)
-					)}
-				</div>
-				<i className="fas fa-user-plus"></i> Add New Team Member (non-func)
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <MgrNav />
+        <div>
+          <h1>Manage Team</h1>
+
+          {/* mapping through dummy data change to real data in production */}
+          {this.state.employees.map((users, i) => (
+            <MgrEmpCard
+              {...users} // Breaks out shifts data for rendering each card
+              key={i} // Gives each card a react key i
+              deleEmp={this.deleEmp}
+            />
+          ))}
+        </div>
+        <i className="fas fa-user-plus"></i> Add New Team Member (non-func)
+      </div>
+    );
+  }
 }
 
 export default MgrTeam;
-
-
-
-
-
-
 
 // Add user FA icon <i class="fas fa-user-plus"></i>

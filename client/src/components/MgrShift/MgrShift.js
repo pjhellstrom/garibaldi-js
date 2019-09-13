@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MgrNav from "./MgrNav";
 import ShiftCard from "./ShiftCard";
-// import shifts from "../../fakedata/shift.json";
 import API from "../../utils/api";
 
 class MgrShift extends Component {
@@ -14,14 +13,16 @@ class MgrShift extends Component {
     this.fetchShifts();
   }
 
-  deleShift = id => {
-    console.log(id);
-    // Add call to remove shift
+  deleShift = shiftId => {
+    API.removeShifts(shiftId)
+      .then(this.fetchShifts)
+      .catch(err => console.log(err));
   };
 
-  updateShift = id => {
-    console.log(id);
-    // Add call to update shift
+  updateShift = shiftId => {
+    API.updateShifts(shiftId)
+      .then(this.fetchShifts)
+      .catch(err => console.log(err));
   };
 
   fetchShifts = () => {

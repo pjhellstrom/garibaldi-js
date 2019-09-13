@@ -1,10 +1,9 @@
 // import "./style.css";
-import Day from "../Day/Day"
+import Day from "../Day/Day";
 import React, { Component } from "react";
 import EmpNav from "./EmpNav";
 import ShiftCard from "./EmpShiftCard";
 import API from "../../utils/empApi";
-
 
 
 class EmpShift extends Component{
@@ -34,12 +33,14 @@ class EmpShift extends Component{
   
   render(){
     return(
+
       <div>
-        <EmpNav/>
+        <EmpNav />
         <div>
           <h1>Employee Page</h1>
           {this.state.shifts.map((shifts,i) => (<ShiftCard {...shifts} key={i} addShift = {this.addShift}/>)
             )}
+
         </div>
       </div>
     );
@@ -47,18 +48,3 @@ class EmpShift extends Component{
 }
 
 export default EmpShift;
-
-// class EmpShift extends React.Component {
-//     render() {
-//         return (
-//             <div>
-//                 <h1>employee view</h1>
-//                 <Day>
-//                     sept 6
-//                 </Day>
-//             </div>
-
-//         )
-//     }
-// }
-// export default EmpShift;
