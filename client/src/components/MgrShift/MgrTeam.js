@@ -33,7 +33,7 @@ class MgrTeam extends Component {
           <h1>Manage Team</h1>
 
           {/* mapping through dummy data change to real data in production */}
-          {this.state.employees.map((employees, i) => (
+          {this.state.employees.map((users, i) => (
             <MgrEmpCard
               {...users} // Breaks out shifts data for rendering each card
               key={i} // Gives each card a react key i
