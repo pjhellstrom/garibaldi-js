@@ -23,12 +23,17 @@ function App() {
         <Route exact path="/managerview/addshift" component={MgrAddShift} />
         <Route exact path="/managerview/manageshift" component={MgrShift} />
         <Route exact path="/employeeview" component={EmpShift} />
+
+				<Route exact path="/employeeview/MyShift" component={EmpMyShift} />
+
+
         <Route
           exact
           path="/employeeview/ClaimShift"
           component={EmpClaimShift}
         />
         <Route exact path="/employeeview/MyShift" component={EmpShift} />
+
         {/* <Route path="/contact" component={Contact} /> */}
       </div>
     </Router>
