@@ -20,6 +20,7 @@ const ShiftCard = props => {
             <b>Claimed:</b> {props.claimed}
             <br />
             <b>Capacity:</b> {props.capacity}
+            <br />
             <Button
               variant="outline-success"
               onClick={() => props.updateShift(props.shiftid)}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MgrNav from "./MgrNav";
 import MgrEmpCard from "./MgrEmpCard";
 import API from "../../utils/api";
+import MgrAddEmp from "./MgrAddEmp";
 
 class MgrTeam extends Component {
   state = {
@@ -41,6 +42,7 @@ class MgrTeam extends Component {
             />
           ))}
         </div>
+        <MgrAddEmp />
         <i className="fas fa-user-plus"></i> Add New Team Member (non-func)
       </div>
     );

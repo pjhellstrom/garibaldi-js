@@ -9,6 +9,10 @@ export default {
     return axios.get("/api/user/manager/all/" + teamId);
   },
 
+  addEmployees: function(newEmp, password) {
+    return axios.post("/api/auth/register", newEmp, password);
+  },
+
   removeEmployees: function(employeeId) {
     return axios.delete("/api/user/manager/deleteuser/" + employeeId);
   },

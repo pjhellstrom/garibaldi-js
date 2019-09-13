@@ -19,6 +19,7 @@ const MgrEmpCard = props => {
             <b>Phone #:</b> {props.phoneNumber}
             <br />
             <b>Is Manager:</b> {props.isManager}
+            <br />
           </Card.Text>
           <Button
             variant="outline-warning"

@@ -10,6 +10,7 @@ import EmpClaimShift from "./components/EmpShift/EmpClaimShift";
 import MgrShift from "./components/MgrShift/MgrShift";
 import MgrTeam from "./components/MgrShift/MgrTeam";
 import MgrAddShift from "./components/MgrShift/MgrAddShift";
+import MgrAddEmp from "./components/MgrShift/MgrAddEmp";
 
 function App() {
   return (
@@ -21,10 +22,9 @@ function App() {
         <Route exact path="/managerview" component={MgrShift} />
         <Route exact path="/managerview/team" component={MgrTeam} />
         <Route exact path="/managerview/addshift" component={MgrAddShift} />
+        <Route exact path="/managerview/addemployee" component={MgrAddEmp} />
         <Route exact path="/managerview/manageshift" component={MgrShift} />
         <Route exact path="/employeeview" component={EmpShift} />
-
-				{/* <Route exact path="/employeeview/MyShift" component={EmpMyShift} /> */}
 
 
         <Route

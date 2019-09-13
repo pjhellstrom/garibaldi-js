@@ -18,7 +18,7 @@ class MgrAddShift extends Component {
     date: "",
     start: "",
     end: "",
-    team_id: ""
+    teamId: ""
   };
 
   // **** NOTE: Should take team_id from user inputing data (manager team_id) ****
