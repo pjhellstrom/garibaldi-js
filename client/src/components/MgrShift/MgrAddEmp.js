@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MgrNav from "./MgrNav";
+// import MgrNav from "./MgrNav";
 import API from "../../utils/api";
 
 class MgrAddEmp extends Component {
@@ -27,7 +27,7 @@ class MgrAddEmp extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    console.log("Saving this employee", this.state);
     this.saveEmployee();
   };
 
@@ -59,8 +59,6 @@ class MgrAddEmp extends Component {
   render() {
     return (
       <div>
-        <MgrNav />
-
         <form className="form">
           <input
             value={this.state.username}

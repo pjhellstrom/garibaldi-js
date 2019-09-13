@@ -17,8 +17,8 @@ export default {
     return axios.delete("/api/user/manager/deleteuser/" + employeeId);
   },
 
-  addShifts: function() {
-    return axios.post("/api/shift/manager/addshift");
+  addShifts: function(newShift) {
+    return axios.post("/api/shift/manager/addshift", newShift);
   },
 
   removeShifts: function(shiftId) {
