@@ -3,6 +3,7 @@ import Day from "../Day/Day";
 import React, { Component } from "react";
 import EmpNav from "./EmpNav";
 import ShiftCard from "./EmpShiftCard";
+import API from "../../utils/api";
 // import shifts from "../../fakedata/shift.json";
 
 class EmpClaimShift extends Component {
@@ -37,4 +38,4 @@ class EmpClaimShift extends Component {
   }
 }
 
-export default EmpShift;
+export default EmpClaimShift;
