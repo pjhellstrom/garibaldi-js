@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 const ShiftCard = props => {
   return (
     <div className="card">
-      <Card id={`${props.shiftid}`}>
+      <Card id={`${props._id}`}>
         {/* {console.log(props)} */}
         <Card.Header>{props.name}</Card.Header>
         <Card.Body>
@@ -17,6 +17,9 @@ const ShiftCard = props => {
             <br />
             <b>Location:</b> {props.location}
             <br />
+            <b>Claimed:</b> {props.claimed}
+            <br />
+            <b>Capacity:</b> {props.capacity}
             <Button
               variant="outline-success"
               onClick={() => props.updateShift(props.shiftid)}

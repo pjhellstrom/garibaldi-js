@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MgrNav from "./MgrNav";
 import ShiftCard from "./ShiftCard";
-// import shifts from "../../fakedata/shift.json";
 import API from "../../utils/api";
 
 class MgrShift extends Component {
