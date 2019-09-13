@@ -23,14 +23,15 @@ class EmpMyShift extends Component{
     })
     .catch(err => console.log(err));
   }
-  
+
+
   render(){
     return(
       <div>
         <EmpNav/>
         <div>
           <h1>My Shifts Page</h1>
-          {this.state.shifts.map((shifts,i) => (<ShiftCard {...shifts} key={i} addShift = {this.addShift}/>)
+          {this.state.shifts.map((shifts,i) => (<ShiftCard {...shifts} key={i}/>)
             )}
         </div>
       </div>

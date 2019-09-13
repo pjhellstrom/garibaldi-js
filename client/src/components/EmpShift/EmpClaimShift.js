@@ -2,7 +2,7 @@
 import Day from "../Day/Day";
 import React, { Component } from "react";
 import EmpNav from "./EmpNav";
-import ShiftCard from "./EmpShiftCard";
+import ShiftCard from "./ShiftCard";
 import API from "../../utils/api";
 // import shifts from "../../fakedata/shift.json";
 
@@ -28,7 +28,7 @@ class EmpClaimShift extends Component {
       <div>
         <EmpNav />
         <div>
-          <h1>Employee Page</h1>
+          <h1>My shifts Page</h1>
           {this.state.shifts.map((shifts, i) => (
             <ShiftCard {...shifts} key={i} />
           ))}
