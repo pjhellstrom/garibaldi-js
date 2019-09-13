@@ -7,7 +7,7 @@ import API from "../../utils/empApi";
 
 
 
-class EmpShift extends Component{
+class EmpMyShift extends Component{
   state = {
     teamId: "5d7a696573326e9c75438f01",
     shifts : []
@@ -23,21 +23,13 @@ class EmpShift extends Component{
     })
     .catch(err => console.log(err));
   }
-
-  addShift = (shift) =>{
-    API.addShifts(this.state.shifts[0][shift])
-    .then(res=>{
-      console.log(res);
-    })
-    .catch(err => console.log(err));
-  }
   
   render(){
     return(
       <div>
         <EmpNav/>
         <div>
-          <h1>Employee Page</h1>
+          <h1>My Shifts Page</h1>
           {this.state.shifts.map((shifts,i) => (<ShiftCard {...shifts} key={i} addShift = {this.addShift}/>)
             )}
         </div>
@@ -46,19 +38,4 @@ class EmpShift extends Component{
   }
 }
 
-export default EmpShift;
-
-// class EmpShift extends React.Component {
-//     render() {
-//         return (
-//             <div>
-//                 <h1>employee view</h1>
-//                 <Day>
-//                     sept 6
-//                 </Day>
-//             </div>
-
-//         )
-//     }
-// }
-// export default EmpShift;
+export default EmpMyShift;
