@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MgrNav from "./MgrNav";
+// import MgrNav from "./MgrNav";
 import API from "../../utils/api";
 
 class MgrAddEmp extends Component {
@@ -27,23 +27,21 @@ class MgrAddEmp extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    console.log("Saving this employee", this.state);
     this.saveEmployee();
   };
 
   saveEmployee = () => {
-    API.addEmployees(
-      {
-        username: this.state.username,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        phoneNumber: this.state.phoneNumber,
-        location: this.state.location,
-        isManager: this.state.isManager,
-        teamId: this.state.teamId
-      },
-      this.state.password
-    )
+    API.addEmployees({
+      username: this.state.username,
+      password: this.state.password,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      phoneNumber: this.state.phoneNumber,
+      location: this.state.location,
+      isManager: this.state.isManager,
+      teamId: this.state.teamId
+    })
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
@@ -61,8 +59,6 @@ class MgrAddEmp extends Component {
   render() {
     return (
       <div>
-        <MgrNav />
-
         <form className="form">
           <input
             value={this.state.username}

@@ -9,16 +9,16 @@ export default {
     return axios.get("/api/user/manager/all/" + teamId);
   },
 
-  addEmployees: function(newEmp, password) {
-    return axios.post("/api/auth/register", newEmp, password);
+  addEmployees: function(newEmp) {
+    return axios.post("/api/auth/register", newEmp);
   },
 
   removeEmployees: function(employeeId) {
     return axios.delete("/api/user/manager/deleteuser/" + employeeId);
   },
 
-  addShifts: function() {
-    return axios.post("/api/shift/manager/addshift");
+  addShifts: function(newShift) {
+    return axios.post("/api/shift/manager/addshift", newShift);
   },
 
   removeShifts: function(shiftId) {
