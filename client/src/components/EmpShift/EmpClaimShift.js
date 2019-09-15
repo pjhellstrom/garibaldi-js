@@ -33,9 +33,9 @@ class EmpClaimShift extends Component {
     API.getShifts(shiftId)
     .then(res=>{
       console.log(res.data);
-      this.setState({shifts : this.state.shifts.push(res.data)});
+      this.setState({shifts : res.data});
       console.log(this.state.shifts);
-
+      
     })
     .catch(err => console.log(err));
   }
