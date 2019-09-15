@@ -10,24 +10,41 @@ class EmpClaimShift extends Component {
   state = {
     teamId: "5d7a696573326e9c75438f01",
     userId : "5d7be3078a8735002a537e49",
-    shifts: []
+    shiftId: [],
+    shifts : []
   };
 
   componentDidMount() {
-    this.fetchShifts();
+    this.fetchUser();
   }
 
   // This needs a filter function to only set to state if claimed < capacity
-  fetchShifts = () => {
+  fetchUser = () => {
     API.checkShift(this.state.userId)
       .then(res => {
-        this.setState({ shifts: res.data.shifts});
+        this.setState({ shiftId: res.data.shifts});
         console.log(res.data);
-        console.log(this.state.shifts);
+        console.log(this.state.shiftId);
       })
       .catch(err => console.log(err));
-    console.log(this.state.shifts.shifts);
   };
+  getShifts = (shiftId) =>{
+    console.log("get into get shifts");
+    API.getShifts(shiftId)
+    .then(res=>{
+      console.log(res.data);
+      this.setState({shifts : this.state.shifts.push(res.data)});
+      console.log(this.state.shifts);
+
+    })
+    .catch(err => console.log(err));
+  }
+
+  getShiftSum = () =>{
+    this.state.shiftId.map(shift=> {this.getShifts(shift)});
+    console.log("get into the shiftSum");
+  }
+
 
   render() {
     return (
@@ -38,6 +55,7 @@ class EmpClaimShift extends Component {
           {/* {this.state.shifts.map((shifts, i) => (
             <ShiftCard {...shifts} key={i} />
           ))} */}
+          {this.getShiftSum()}
         </div>
       </div>
     );

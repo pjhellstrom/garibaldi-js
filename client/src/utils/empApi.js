@@ -11,6 +11,10 @@ export default {
   checkShift : function(userId) {
     console.log(userId);
     return axios.get("/api/user/employee/shifts/" + userId);
+  },
+  getShifts : function(shiftId) {
+    console.log(shiftId);
+    return axios.get("/api/shifts/findOneShift/" + shiftId);
   }
-  // it should be in the manager Api
+
 };
