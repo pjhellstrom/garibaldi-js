@@ -18,7 +18,7 @@ export default {
   },
 
   addShifts: function(newShift) {
-    return axios.post("/api/shift/manager/addshift", newShift);
+    return axios.post("/api/shifts/manager/addshift", newShift);
   },
 
   removeShifts: function(shiftId) {
