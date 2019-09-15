@@ -3,12 +3,13 @@ import Day from "../Day/Day";
 import React, { Component } from "react";
 import EmpNav from "./EmpNav";
 import ShiftCard from "./ShiftCard";
-import API from "../../utils/api";
+import API from "../../utils/empApi";
 // import shifts from "../../fakedata/shift.json";
 
 class EmpClaimShift extends Component {
   state = {
     teamId: "5d7a696573326e9c75438f01",
+    userId : "5d7be3078a8735002a537e49",
     shifts: []
   };
 
@@ -18,9 +19,14 @@ class EmpClaimShift extends Component {
 
   // This needs a filter function to only set to state if claimed < capacity
   fetchShifts = () => {
-    API.getManager(this.state.teamId)
-      .then(res => this.setState({ shifts: res.data }))
+    API.checkShift(this.state.userId)
+      .then(res => {
+        this.setState({ shifts: res.data.shifts});
+        console.log(res.data);
+        console.log(this.state.shifts);
+      })
       .catch(err => console.log(err));
+    console.log(this.state.shifts.shifts);
   };
 
   render() {
@@ -29,9 +35,9 @@ class EmpClaimShift extends Component {
         <EmpNav />
         <div>
           <h1>My shifts Page</h1>
-          {this.state.shifts.map((shifts, i) => (
+          {/* {this.state.shifts.map((shifts, i) => (
             <ShiftCard {...shifts} key={i} />
-          ))}
+          ))} */}
         </div>
       </div>
     );
