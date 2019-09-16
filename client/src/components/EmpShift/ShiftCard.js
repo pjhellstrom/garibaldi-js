@@ -14,15 +14,10 @@ const ShiftCard = (props) => {
 				<Card.Body>
 					{/* <Card.Title>Special title treatment</Card.Title> */}
 					<Card.Text>
-					<b>Email:</b> {props.username}
-					<br />
-					<b>Home Location:</b> {props.location}
-					<br />
-					<b>Phone #:</b> {props.phoneNumber}
-					<br />
-					<b>Is Manager:</b> {props.isManager}
-					<br />
-					<p>Shifts : {props.shifts}</p>
+					<b>Date:</b> {props.date}<br/>
+					<b>Time:</b> {props.start} to {props.end}<br/>
+					<b>Location:</b> {props.location}<br/>
+					<b>Description:</b> {props.description}
 					</Card.Text>
 				</Card.Body>
 			</Card>
