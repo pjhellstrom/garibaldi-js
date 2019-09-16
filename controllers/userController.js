@@ -5,7 +5,7 @@ module.exports = {
   findAll: function(req, res) {
     User.find({ teamId: req.params.id, isManager: false })
       .sort({ lastName: -1 })
-      .populate("team")
+      .populate("shifts")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -27,6 +27,7 @@ module.exports = {
   },
   claim: function(req, res) {
     User.updateOne({ _id: req.params.id }, { $push: req.body })
+      .populate("shifts")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
