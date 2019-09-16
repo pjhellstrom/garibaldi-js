@@ -1,7 +1,11 @@
 import React from "react";
 import Card from 'react-bootstrap/Card'
 
-const ShiftCard = (props) => {
+function EmpShiftCard (props){
+	function addShifts(){
+		props.value(props.index);
+		console.log(props.index);
+	}
 	return (
 		<div className="card">
 
@@ -16,7 +20,7 @@ const ShiftCard = (props) => {
 						<b>Location:</b> {props.location}<br/>
 						<b>Description:</b> {props.description}
 					</Card.Text>
-					<button className="btn btn-success" onClick={props.addShift} >Accept</button>
+					<button className="btn btn-success" onClick = {addShifts} >Accept</button>
 				</Card.Body>
 			</Card>
 
@@ -26,4 +30,4 @@ const ShiftCard = (props) => {
 	);
 }
 
-export default ShiftCard;
+export default EmpShiftCard;

@@ -14,15 +14,15 @@ class EmpClaimShift extends Component {
   };
 
   componentDidMount() {
-    this.fetchUser();
+    this.fetchUserShifts();
   };
 
   // This needs a filter function to only set to state if claimed < capacity
-  fetchUser = () => {
+  fetchUserShifts = () => {
     API.checkShift(this.state.userId)
       .then(res => {
         this.setState({ shifts: res.data.shifts});
-        console.log(res.data);
+        console.log(res.data.shifts.length);
         console.log(this.state.shifts);
       })
       .catch(err => console.log(err));
@@ -34,9 +34,9 @@ class EmpClaimShift extends Component {
         <EmpNav />
         <div>
           <h1>My shifts Page</h1>
-          /* {this.state.shifts.map((shifts, i) => (
+          {this.state.shifts.map((shifts, i) => (
             <ShiftCard {...shifts} key={i} />
-          ))} */
+          ))}
         </div>
       </div>
     );
