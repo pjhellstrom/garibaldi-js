@@ -4,6 +4,7 @@ const Shift = require("../models/shift");
 module.exports = {
   findAll: function(req, res) {
     Shift.find({ teamId: req.params.id })
+      .populate("pendingUserId")
       .sort({ date: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -20,6 +21,7 @@ module.exports = {
   },
   update: function(req, res) {
     Shift.updateOne({ _id: req.params.id }, req.body)
+      .populate("pendingUserId")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

@@ -35,6 +35,14 @@ function MgrNav() {
 			</li>
 			<li className="nav-item">
 				<Link
+					to="/managerview/pendingapproval"
+					className={window.location.pathname === "/managerview/pendingapproval" ? "nav-link active" : "nav-link"}
+				>
+					<i className="fas fa-calendar-check fa-2x"></i>
+				</Link>
+			</li>
+			<li className="nav-item">
+				<Link
 					to="/logout"
 					className={window.location.pathname === "/logout" ? "nav-link active" : "nav-link"}
 				>

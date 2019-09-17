@@ -11,6 +11,7 @@ import MgrShift from "./components/MgrShift/MgrShift";
 import MgrTeam from "./components/MgrShift/MgrTeam";
 import MgrAddShift from "./components/MgrShift/MgrAddShift";
 import MgrAddEmp from "./components/MgrShift/MgrAddEmp";
+import MgrPendingApp from "./components/MgrShift/MgrPendingApproval";
 
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
         <Route exact path="/managerview/addshift" component={MgrAddShift} />
         <Route exact path="/managerview/addemployee" component={MgrAddEmp} />
         <Route exact path="/managerview/manageshift" component={MgrShift} />
+        <Route exact path="/managerview/pendingapproval" component={MgrPendingApp} />
         <Route exact path="/employeeview" component={EmpShift} />
+
 
 
         <Route
