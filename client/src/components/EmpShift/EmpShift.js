@@ -29,8 +29,8 @@ class EmpShift extends Component{
     .catch(err => console.log(err));
   }
   addShift = shift =>{
-    console.log(this.state.shifts[shift]._id);
-    const pending = {"pendingShifts": this.state.shifts[shift]._id};
+    console.log(this.state.avaliableShifts[shift]._id);
+    let pending = {"pendingShifts": this.state.avaliableShifts[shift]._id};
 
     API.addToPending(this.state.userId,pending)
     .then(res=>{
