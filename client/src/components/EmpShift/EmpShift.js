@@ -16,10 +16,13 @@ class EmpShift extends Component{
     pendingShifts : [],
     avaliableShifts : []
   }
+  //get all shfts and check user's shifts before the component loaded
   componentDidMount(){
     this.employeeShifts();
     this.fetchUserShifts();
   }
+
+  //get all shifts and store in state.shifts
   employeeShifts = () =>{
     API.getAllShift(this.state.teamId)
     .then(res=>{
@@ -28,18 +31,34 @@ class EmpShift extends Component{
     })
     .catch(err => console.log(err));
   }
+  //add to user pendingShifts field 
   addShift = shift =>{
     console.log(this.state.avaliableShifts[shift]._id);
-    let pending = {"pendingShifts": this.state.avaliableShifts[shift]._id};
+    const pending = {"pendingShifts": this.state.avaliableShifts[shift]._id};
 
-    API.addToPending(this.state.userId,pending)
+    API.addToUserPending(this.state.userId,pending)
     .then(res=>{
       console.log(res);
-    })
+      this.addToMgrPendingShifts(this.state.avaliableShifts[shift]._id);
+      })
     .catch(err => console.log(err));
   }
   
-  // This needs a filter function to only set to state if claimed < capacity
+  //add to shift pendingShifts
+
+    addToMgrPendingShifts = shiftId => {
+      console.log("Starting add to shifts collection  ...");
+      const userId = {"pendingUserId" : this.state.userId }
+      API.addToMgrPending(shiftId,userId)
+      .then(res=>{
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+    }
+
+
+  // TODO:This needs a filter function to only set to state if claimed < capacity
+  //get user's information
   fetchUserShifts = () => {
     API.checkShift(this.state.userId)
       .then(res => {
@@ -54,6 +73,8 @@ class EmpShift extends Component{
       })
       .catch(err => console.log(err));
   };
+
+  //get all shifts which didn't claimed or already proved by manager
   getAvaliableShifts = ()=>{
     let otherShifts = [];
     const pendingShifts = this.state.pendingShifts;
@@ -67,7 +88,7 @@ class EmpShift extends Component{
     console.log(otherShifts);
     this.setState({avaliableShifts : otherShifts});
   }
-
+// display the shifts
   displayCard =()=>{
     return this.state.avaliableShifts.map((shift,index) => (
     <ShiftCard {...shift} index = {index} value = {this.addShift}/>)

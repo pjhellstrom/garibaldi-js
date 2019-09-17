@@ -10,7 +10,15 @@ const shiftSchema = new Schema({
   date: { type: Date, required: true },
   start: { type: String, required: true },
   end: { type: String, required: true },
-  teamId: { type: String, required: true }
+  teamId: { type: String, required: true },
+  provedUserId: {
+    type: Schema.Types.ObjectId,
+    ref : "User"
+  },
+  pendingUserId: {
+    type: Schema.Types.ObjectId,
+    ref : "User"
+  }
 });
 
 const Shift = mongoose.model("Shift", shiftSchema);
